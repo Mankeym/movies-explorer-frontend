@@ -1,0 +1,9 @@
+.about__white-block{
+    width: 100%;
+    max-width: 912px;
+    height: 36px;
+    display: flex;
+    background: #F2F2F2;
+    text-align: center;
+    justify-content: center;
+}

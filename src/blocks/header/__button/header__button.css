@@ -1,0 +1,22 @@
+.header__button{
+    width: 76px;
+    height: 32px;
+    background: #2BE080;
+    border-radius: 3px;
+    margin-right: 70px;
+    margin-top: 21px;
+    border-color: transparent;
+}
+@media (max-width: 780px) {
+    .header__button{
+        margin-right: 30px;
+    }
+}
+@media (max-width: 730px) {
+    .header__button{
+        width: 54px;
+        height: 26px;
+        margin-top: 24px;
+        margin-right: 14px;
+    }
+}

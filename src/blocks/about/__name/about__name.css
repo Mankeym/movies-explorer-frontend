@@ -1,0 +1,12 @@
+.about__name{
+    font-family: Inter, serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    /* identical to box height, or 121% */
+
+    text-align: center;
+
+    color: #A0A0A0;
+}

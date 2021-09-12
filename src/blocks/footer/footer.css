@@ -1,0 +1,10 @@
+.footer{
+    max-width: 1280px;
+    background: #FFFFFF;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-top: 79px;
+    padding-bottom: 20px;
+}

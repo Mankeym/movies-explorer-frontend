@@ -1,0 +1,19 @@
+.about__subtitle{
+    margin: 0 0 26px;
+    font-family: Inter, serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: -0.04em;
+    width: 100%;
+    color: #000000;
+}
+@media (max-width: 730px) {
+    .about__subtitle{
+        margin: 0 0 16px;
+        font-size: 18px;
+        line-height: 22px;
+
+    }
+}

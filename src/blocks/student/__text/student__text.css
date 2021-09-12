@@ -1,0 +1,16 @@
+.student__text{
+    max-width: 600px;
+    width: 100%;
+    margin: 0;
+    font-family: Inter, serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 22px;
+    /* or 157% */
+
+
+    color: #000000;
+
+    mix-blend-mode: normal;
+}

@@ -1,0 +1,16 @@
+.student__stag{
+    max-width: 600px;
+    width: 100%;
+    margin: 0 0 26px;
+    font-family: Inter, serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 20px;
+    /* identical to box height, or 111% */
+
+
+    color: #000000;
+
+    mix-blend-mode: normal;
+}

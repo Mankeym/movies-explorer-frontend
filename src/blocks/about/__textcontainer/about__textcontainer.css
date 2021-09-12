@@ -1,0 +1,17 @@
+.about__textcontainer{
+    display: flex;
+    flex-direction: column;
+    width: 550px;
+}
+@media (max-width: 730px) {
+    .about__textcontainer{
+        font-size: 18px;
+        line-height: 22px;
+        width: auto;
+
+    }
+    .about__textcontainer:first-of-type{
+        margin-bottom: 56px;
+
+    }
+}

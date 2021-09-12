@@ -1,0 +1,12 @@
+.student__site-link{
+    width: 29px;
+    height: 60px;
+    margin-right: 70px;
+}
+@media (max-width: 730px) {
+    .student__site-link{
+        width: 18px;
+        height: 28px;
+        margin-right: 14px;
+    }
+}

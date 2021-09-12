@@ -1,0 +1,23 @@
+.login__input {
+    background-color: #F9F9F9;
+    height: 46px;
+    outline: none;
+    box-shadow: none;
+    border: none;
+    border-radius: 8px;
+    width: 396px;
+    padding: 15px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    font-family: Inter, serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 13px;
+}
+@media (max-width: 450px) {
+    
+    .login__input{
+        width: 260px;
+    }
+
+}

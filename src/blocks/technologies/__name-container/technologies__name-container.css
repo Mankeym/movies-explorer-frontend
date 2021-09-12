@@ -1,0 +1,9 @@
+.technologies__name-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: #E8E8E8;
+    border-radius: 10px;
+    width: 90px;
+    height: 60px;
+}

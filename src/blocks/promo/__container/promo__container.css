@@ -1,0 +1,7 @@
+.promo__container{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    height: 406px;
+}

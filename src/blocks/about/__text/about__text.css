@@ -19,3 +19,9 @@
 
     }
 }
+@media (max-width: 450px) {
+    .about__text{
+        width:284px;
+
+    }
+}

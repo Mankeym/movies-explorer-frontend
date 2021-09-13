@@ -6,4 +6,8 @@
     border-radius: 10px;
     width: 90px;
     height: 60px;
+    margin-right: 10px;
+}
+.technologies__name-container:last-of-type{
+    margin-right: 0;
 }

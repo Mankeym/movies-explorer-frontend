@@ -15,10 +15,3 @@
 
     color: #000000;
 }
-@media (max-width: 730px) {
-    .about__title{
-        margin-left: 14px;
-        margin-right: 14px;
-
-    }
-}

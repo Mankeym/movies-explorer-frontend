@@ -17,3 +17,10 @@
 
     }
 }
+@media (max-width: 450px) {
+    .about__subtitle{
+        width: 284px;
+        font-size: 18px;
+        line-height: 22px;
+    }
+}

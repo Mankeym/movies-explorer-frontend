@@ -7,6 +7,16 @@ function MoviesCards() {
             <div className="cards__container">
 
                 <MoviesCard />
+                <MoviesCard />
+                <MoviesCard />
+                <MoviesCard />
+                <MoviesCard />
+                <MoviesCard />
+                <MoviesCard />
+                <MoviesCard />
+                <MoviesCard />
+                <MoviesCard />
+
             </div>
             <div className="cards__button-container">
                 <button className="cards__more">

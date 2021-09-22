@@ -1,20 +1,39 @@
 import logo from '../images/logohead.svg';
-function Login() {
+import {useFormWithValidation } from "../hooks/useValidationForm";
+
+const Login = (props) => {
+
+    const {values, handleChange, resetFrom, errors, isValid} = useFormWithValidation ();
+
+    function handleLoginSubmit(e) {
+        e.preventDefault();
+        props.onLogin(values);
+        resetFrom();
+    }
   return (
-    <>
         <section className='login'>
           <img className='login__icon' alt='Логотип' src={logo} />
           <h3 className='login__title'>Рады видеть!</h3>
-          <form className='login__form'>
-            <label for='email' className='login__label'>E-mail</label>
-            <input type='email' id='email' className='login__input' />
-            <label for='password' className='login__label'>Пароль</label>
-            <input id='password' type='password' className='login__input' />
+          <form className='login__form' onSubmit={handleLoginSubmit}>
+            <label htmlFor='email' className='login__label'  >E-mail</label>
+            <input type='email' name="email" id='email' className='login__input'
+                   pattern="^((([0-9A-Za-z]{1}[-0-9A-z\.]{0,30}[0-9A-Za-z]?)|([0-9А-Яа-я]{1}[-0-9А-я\.]{0,30}[0-9А-Яа-я]?))@([-A-Za-z]{1,}\.){1,}[-A-Za-z]{2,})$"
+                   onChange={handleChange}
+                   required
+            />
+              <span className='register__form_span'>{errors.email}</span>
+            <label htmlFor='password' className='login__label'>Пароль</label>
+            <input name="password" id='password' type='password' className='login__input'
+                   minLength="8"
+                   maxLength="20"
+                   required
+                   onChange={handleChange}
+            />
+              <span className='register__form_span'>{errors.password}</span>
             <button type='submit' className='login__button'>Войти</button>
           </form>
           <p className='login__enter-text'>Ещё не зарегестрированы? <a className='login__enter-link' href='/sign-up'>Регистрация</a></p>
         </section>
-    </>
   )
 }
 export default Login

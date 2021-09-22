@@ -7,7 +7,6 @@ import Header from "./Header";
 
 
 function Main() {
-
     return(
         <main>
             <div className="page">

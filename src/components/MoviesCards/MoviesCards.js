@@ -1,5 +1,5 @@
 import MoviesCard from "../MoviesCard/MoviesCard";
-import React, {useEffect} from "react";
+import React from "react";
 
 function MoviesCards(props) {
     const [renderedMoviesCount, setRenderedMoviesCount] = React.useState(6);

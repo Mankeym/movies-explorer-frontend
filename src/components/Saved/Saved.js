@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import MoviesHeader from "../MoviesHeader/MoviesHeader";
 import Menu from "../Menu/Menu";
 import SearchForm from "../SearchForm/SearchForm";

@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 
 function Register(props) {
 
-    const {values, handleChange, resetForm, errors, isValid} = useFormWithValidation()
+    const {values, handleChange, errors} = useFormWithValidation()
 
     function handleSubmit(e) {
         e.preventDefault();

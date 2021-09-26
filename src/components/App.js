@@ -1,4 +1,4 @@
-import { Route, Switch, useHistory, useLocation} from "react-router-dom";
+import { Route, Switch, useHistory} from "react-router-dom";
 import React from "react";
 import Main from "./Main";
 import Movies from './Movies/Movies';
@@ -13,7 +13,6 @@ import * as Auth from "../utils/Auth";
 import newMainApi from "../utils/MainApi";
 import newMoviesApi from "../utils/MoviesApi";
 import useFormWithValidation from "../hooks/useValidation";
-import {SHORT_MOVIES_DURATION} from "../configs/constants";
 import Saved from "./Saved/Saved";
 
 ;
@@ -21,8 +20,6 @@ import Saved from "./Saved/Saved";
 function App() {
     const [loggedIn, setLoggedIn] = React.useState(false);
     const history = useHistory();
-    const location = useLocation();
-    const [valueSearch, setValueSearch ] = React.useState();
     const [currentUser, setCurrentUser] = React.useState({_id: '', name: '', email: ''});
     const [editProfileStatus, setEditProfileStatus] = React.useState(false);
     const [isStatusOk, setStatusOk] = React.useState(false);
@@ -33,11 +30,6 @@ function App() {
         password: ''
     });
 
-    //открытие-закрытие попапов
-    const [isMenuOpen, setMenuOpen] = React.useState(false);
-    const [isPopupOpen, setPopupOpen] = React.useState(false);
-    // состояние чекбокса на странице Сохраненные фильмы
-    const [isSavedCheckBox, setIsSavedCheckBox] = React.useState(false);
 //фильмы
     const [moviesFromApi, setMoviesFromApi] = React.useState([]);
     const [searchedMovies, setSearchedMovies] = React.useState([]);
@@ -45,7 +37,6 @@ function App() {
     const [isPreloaderOn, setPreloaderOn] = React.useState(false);
     const [movies, setMovies] = React.useState([]);
     const [clickCounter, changeClickCounter] = React.useState(1);
-    // состояние чекбокса на странице Фильмы
     const [isActive, setIsActive] = React.useState({
         tumbler: false
     });
@@ -61,13 +52,6 @@ function App() {
             setShowMore(true)
         }
     })
-    function preloaderOn() {
-        setPreloaderOn(true)
-    }
-
-    function preloaderOff() {
-        setPreloaderOn(false)
-    }
 //методы для регистрации, авторизации
     React.useEffect(() => {
         if (loggedIn) {
@@ -175,9 +159,6 @@ function App() {
         setPreloaderOn(false)
     }
 
-    function handleMovieSearch(value) {
-
-    }
 
     function handleSearchForm(e) {
         preloaderOn();

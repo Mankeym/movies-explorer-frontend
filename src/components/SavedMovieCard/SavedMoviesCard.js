@@ -1,6 +1,4 @@
 import React from "react";
-import {beatFilmUrl} from "../../utils/constants";
-import {CurrentUserContext} from "../../contexts/CurrentUserContext";
 
 function SavedMoviesCard(props) {
     console.log(props.movie._id)
@@ -11,7 +9,6 @@ function SavedMoviesCard(props) {
 
     const durationHour = Math.floor(props.movie.duration / 60)
     const durationMinutes = Math.round(props.movie.duration % 60)
-    let buttonClass = 'movies-card__button'
 
 
     return(

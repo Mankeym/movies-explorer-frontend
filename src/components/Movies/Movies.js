@@ -3,7 +3,7 @@ import SearchForm from "../SearchForm/SearchForm";
 import MoviesCards from "../MoviesCards/MoviesCards";
 import Footer from "../Footer";
 import Menu from "../Menu/Menu";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Preloader from '../Preloader/Preloader';
 
 function Movies(props) {

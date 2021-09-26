@@ -1,6 +1,7 @@
 
 import logo from '../images/logohead.svg';
 import useFormWithValidation from "../hooks/useValidation";
+import {Link} from "react-router-dom";
 
 function Login(props) {
 
@@ -33,7 +34,7 @@ function Login(props) {
               <span className='register__form_span'>{errors.password}</span>
             <button type='submit' className='login__button'>Войти</button>
           </form>
-          <p className='login__enter-text'>Ещё не зарегестрированы? <a className='login__enter-link' href='/signup'>Регистрация</a></p>
+          <p className='login__enter-text'>Ещё не зарегестрированы? <Link className='login__enter-link' to='/signup'>Регистрация</Link></p>
         </section>
   )
 }

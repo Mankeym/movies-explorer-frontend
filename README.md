@@ -1,4 +1,4 @@
 #Фронт для дипломной работы
 Сcылки
-back https://diplom.prakticum.api.nomoredomains.club/
-front https://diplom.prakticum.nomoredomains.club/
+back http://diplom.prakticum.api.nomoredomains.club/
+front http://diplom.prakticum.nomoredomains.club/

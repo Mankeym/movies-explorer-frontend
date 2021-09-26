@@ -1,90 +1,94 @@
+import {beatFilmUrl} from "./constants";
+
 class MainApi {
-  constructor(url) {
-    this._url = url;
-  };
+  constructor(options) {
+    this.baseUrl = options.baseUrl;
+    this.headers = options.headers;
+  }
 
   _checkResponse(res) {
     if (res.ok) {
+      console.log(res)
       return res.json();
     }
-    return Promise.reject(`Что-то пошло не так: ${res.status}`);
-  };
+    return Promise.reject(`Ошибка ${res.status}`);
+  }
 
-  getAllMovies(token) {
-    return fetch(`${this._url}/movies`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`,
-      },
+  // запрос данных пользователя с сервера
+  getProfileInfo() {
+    return fetch(this.baseUrl + '/users/me', {
+      headers: this.headers
     })
-        .then((res) => this._checkResponse(res))
-  };
+        .then(this._checkResponse)
+  }
 
-  addMovie(movie, token) {
-    const URL = 'https://api.nomoreparties.co';
-    const NO_IMAGE = 'https://upload.wikimedia.org/wikipedia/commons/6/6c/No_image_3x4.svg';
-    return fetch(`${this._url}/movies`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`,
-      },
+  // редактирование данных пользователя
+  editProfileInfo(name, email) {
+    return fetch(this.baseUrl + '/users/me', {
+      method: 'PATCH',
+      headers: this.headers,
       body: JSON.stringify({
-        country: movie.country || "No information",
-        director: movie.director || "No information",
+        name: name,
+        email: email
+      })
+    })
+        .then(this._checkResponse)
+  }
+
+  setToken() {
+    this.headers.authorization = `Bearer ${localStorage.getItem('jwt')}`;
+  }
+  //добавление нового фильма
+  addNewMovie(movie) {
+    return fetch(this.baseUrl + '/movies', {
+      method: 'POST',
+      headers: this.headers,
+      body: JSON.stringify({
+        country: movie.country,
+        director: movie.director,
         duration: movie.duration,
         year: movie.year,
-        description: movie.description || "No information",
-        image: movie.image ? URL + movie.image.url: NO_IMAGE,
+        description: movie.description,
+        image: beatFilmUrl + movie.image.url,
         trailer: movie.trailerLink,
-        thumbnail: movie.image ? URL + movie.image.formats.thumbnail.url: NO_IMAGE,
+        thumbnail:beatFilmUrl + movie.image.formats.thumbnail.url,
+        nameRU: movie.nameRU,
+        nameEN: movie.nameEN,
         movieId: movie.id,
-        nameRU: movie.nameRU || movie.nameEN,
-        nameEN: movie.nameEN || movie.nameRU,
       })
     })
-        .then((res) => this._checkResponse(res))
+        .then(this._checkResponse)
   }
 
-  deleteMovie(id, token) {
-    return fetch(`${this._url}/movies/${id}`, {
-      method: 'DELETE',
-      headers: {
-        'Authorization': `Bearer ${token}`,
-      }
-    })
-        .then((res) => this._checkResponse(res))
-  };
-
-  getCurrentProfile() {
-    return fetch(`${this._url}/users/me`, {
+  //получить все сохраненные пользователем фильмы
+  getMovies() {
+    return fetch(this.baseUrl + '/movies', {
       method: 'GET',
-      headers: {
-        'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
-        'Content-Type': 'application/json'
-      }
+      headers: this.headers,
     })
-        .then(res => this._checkResponse(res))
-        .then(data => data)
+
+        .then(this._checkResponse)
   }
 
-  updateCurrentProfile(email, name, token) {
-    return fetch(`${this._url}/users/me`, {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`,
-      },
-      body: JSON.stringify({
-        email,
-        name,
-      })
+  //удалить фильм по id
+  deleteMovie(movieId) {
+    return fetch(this.baseUrl + `/movies/${movieId}`, {
+      method: 'DELETE',
+      headers: this.headers,
     })
-        .then((res) => this._checkResponse(res))
-  };
+        .then(this._checkResponse)
+
+  }
 }
 
-const mainApi = new MainApi('http://localhost:3050');
+const newMainApi = new MainApi({
 
-export default mainApi;
+  //baseUrl: 'http://localhost:3051',
+  baseUrl: 'http://diplom.prakticum.api.nomoredomains.club',
+  headers: {
+    authorization: `Bearer ${localStorage.getItem('jwt')}`,
+    'Content-Type': 'application/json'
+  }
+})
+
+export default newMainApi

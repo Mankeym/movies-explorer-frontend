@@ -1,20 +1,21 @@
+
 import logo from '../images/logohead.svg';
-import {useFormWithValidation } from "../hooks/useValidationForm";
+import useFormWithValidation from "../hooks/useValidation";
 
-const Login = (props) => {
+function Login(props) {
 
-    const {values, handleChange, resetFrom, errors, isValid} = useFormWithValidation ();
+    const {values, handleChange, resetForm, errors, isValid} = useFormWithValidation()
 
-    function handleLoginSubmit(e) {
+    function handleSubmit(e) {
         e.preventDefault();
-        props.onLogin(values);
-        resetFrom();
+        const {email, password} = values;
+        props.onAutorization({email, password})
     }
   return (
         <section className='login'>
           <img className='login__icon' alt='Логотип' src={logo} />
           <h3 className='login__title'>Рады видеть!</h3>
-          <form className='login__form' onSubmit={handleLoginSubmit}>
+          <form className='login__form' onSubmit={handleSubmit}>
             <label htmlFor='email' className='login__label'  >E-mail</label>
             <input type='email' name="email" id='email' className='login__input'
                    pattern="^((([0-9A-Za-z]{1}[-0-9A-z\.]{0,30}[0-9A-Za-z]?)|([0-9А-Яа-я]{1}[-0-9А-я\.]{0,30}[0-9А-Яа-я]?))@([-A-Za-z]{1,}\.){1,}[-A-Za-z]{2,})$"
@@ -32,7 +33,7 @@ const Login = (props) => {
               <span className='register__form_span'>{errors.password}</span>
             <button type='submit' className='login__button'>Войти</button>
           </form>
-          <p className='login__enter-text'>Ещё не зарегестрированы? <a className='login__enter-link' href='/sign-up'>Регистрация</a></p>
+          <p className='login__enter-text'>Ещё не зарегестрированы? <a className='login__enter-link' href='/signup'>Регистрация</a></p>
         </section>
   )
 }

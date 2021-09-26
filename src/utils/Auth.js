@@ -1,39 +1,43 @@
-class Auth {
-  constructor(url) {
-    this._url = url;
-  };
+export const BASE_URL = 'http://diplom.prakticum.api.nomoredomains.club';
+//export const BASE_URL = 'http://localhost:3051';
 
-  _checkResponse(res) {
+
+export const registration = ({name, email, password}) => {
+    console.log({name, email, password})
+    return fetch(`${BASE_URL}/signup`, {
+        method: 'POST',
+        headers: {'Accept': 'application/json',
+            "Content-Type": "application/json"} ,
+        body: JSON.stringify({name, email, password})
+    })
+        .then(checkResponse)
+}
+
+export const authorization = ({email, password}) => {
+    return fetch(`${BASE_URL}/signin`, {
+        method: 'POST',
+        headers: {'Accept': 'application/json',
+            "Content-Type": "application/json"},
+        body: JSON.stringify({email, password})
+    })
+        .then(checkResponse)
+}
+
+export const getContent = (token) => {
+    return fetch(BASE_URL + '/users/me', {
+        method: 'GET',
+        headers: {
+            'Accept': 'application/json',
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+        }
+    })
+        .then(checkResponse)
+}
+
+export const checkResponse = (res) => {
     if (res.ok) {
-      return res.json();
+        return res.json();
     }
-    return Promise.reject(`Что-то пошло не так: ${res.status}`);
-  };
-
-  login(password, email) {
-    return fetch(`${this._url}/signin`, {
-      method: 'POST',
-      credentials: 'include',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({password, email})
-    })
-        .then((res) => this._checkResponse(res))
-  };
-
-  register(password, email, name) {
-    return fetch(`${this._url}/signup`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({password, email, name})
-    })
-        .then((res) => this._checkResponse(res))
-  };
-};
-
-const auth = new Auth('http://localhost:3050');
-export default auth;
+    return Promise.reject(`Ошибка ${res.status}`);
+}

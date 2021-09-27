@@ -4,18 +4,18 @@ function SavedMoviesCard(props) {
     console.log(props.movie._id)
 
     function onClick() {
-        window.open(props.movie.trailerLink);
+        window.open(props.movie.trailer);
     }
 
     const durationHour = Math.floor(props.movie.duration / 60)
     const durationMinutes = Math.round(props.movie.duration % 60)
-
+    console.log(props.movie)
 
     return(
         <>
             <article className="movies-card">
                 <div className="movies-card__container">
-                    <div className="movies-card__image-container">
+                    <div  className="movies-card__image-container">
 
                         <button
                             className={`movies-card__button-ok`}

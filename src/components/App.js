@@ -337,23 +337,24 @@ function App() {
                     component={Profile}
                     user={currentUser}
                 />
-
+              <Route path="/signin">
+                  <Login
+                      data={data}
+                      onEnter={setData}
+                      onAutorization={handleAuthorization} />
+              </Route>
+              <Route path="/signup">
+                  <Register onRegister={handleRegistration}
+                            isValidate={useFormWithValidation}
+                  />
+              </Route>
 
                         <Route render={Error}>
                         </Route>
 
+
           </Switch>
-          <Route path="/signin">
-              <Login
-                  data={data}
-                  onEnter={setData}
-                  onAutorization={handleAuthorization} />
-          </Route>
-          <Route path="/signup">
-              <Register onRegister={handleRegistration}
-                        isValidate={useFormWithValidation}
-              />
-          </Route>
+
       </CurrentUserContext.Provider>
   );
 

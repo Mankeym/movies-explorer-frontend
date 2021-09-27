@@ -9,6 +9,9 @@ export const Profile = (props) => {
     const currentUser = React.useContext(CurrentUserContext);
     const {values, handleChange, errors, isValid} = useFormWithValidation()
     const nameProfile = localStorage.getItem('profile');
+    const overlayProfile = document.querySelector('.profile__overlay');
+    const isCurrentName = values.name === currentUser.name;
+    const isCurrentEmail = values.email === currentUser.email;
     let apple;
     if(nameProfile != null){
         apple = nameProfile;
@@ -20,9 +23,13 @@ export const Profile = (props) => {
         e.preventDefault()
         const {name, email} = values;
         props.onUpdateUser({name, email});
-
+        overlayProfile.classList.add('profile__overlay_active');
 
     }
+    function closeOverlay(){
+        overlayProfile.classList.remove('profile__overlay_active')
+    }
+
     return (
         <>
         <MoviesHeader />
@@ -50,12 +57,20 @@ export const Profile = (props) => {
                     <span> {errors.email}</span>
                 </div>
                 <div className="profile__links">
-                    <button type="submit" className="profile__link-redact" disabled={!isValid}>Редактировать</button>
+                    <button type="submit" className={`${isValid && isCurrentEmail && isCurrentName ? 'profile__link-redact' :
+                        'profile__link-redact profile__edit-button_novalidate'}`} disabled={isValid && isCurrentEmail && isCurrentName}>Редактировать</button>
                     <Link className="profile__link-exit" onClick={props.onLogOut}>Выйти из аккаунта</Link>
                 </div>
             </form>
 
         </section>
+            <div className={'profile__overlay'} onClick={closeOverlay}>
+                <div className={'profile__popup'}>
+                    <p className={'profile__popup-text'}>
+                        Данные обновленны!
+                    </p>
+                </div>
+            </div>
         </>
     );
 }

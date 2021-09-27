@@ -81,13 +81,15 @@ function App() {
         Auth.registration({name, email, password})
             .then(() => {
                 setStatusOk(true);
-                history.push('/signin')
                 localStorage.setItem('profile', name)
+                handleAuthorization({email, password})
             })
             .catch((err) => {
                 setStatusOk(false);
                 console.log('error', err)
             })
+
+
     }
 
     function handleAuthorization({email, password}) {
@@ -95,6 +97,7 @@ function App() {
             .then((data) => {
                 console.log(data.token, email, password)
                 localStorage.setItem('jwt', data.token);
+                history.push('/movies')
                 newMainApi.setToken();
                 setLoggedIn(true);
                 setStatusOk(true);

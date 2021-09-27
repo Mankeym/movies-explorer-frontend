@@ -17,7 +17,6 @@ function SavedMoviesCards(props) {
         }
 
     }
-    console.log(props.countMoviesSavedSearch)
     return(
         <section className="cards">
             <div className="cards__container">

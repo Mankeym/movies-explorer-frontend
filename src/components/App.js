@@ -339,8 +339,7 @@ function App() {
                 />
 
 
-                        <Route path='*'>
-                            <Error />
+                        <Route render={Error}>
                         </Route>
 
           </Switch>

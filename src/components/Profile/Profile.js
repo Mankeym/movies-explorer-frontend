@@ -8,18 +8,27 @@ import useFormWithValidation from "../../hooks/useValidation";
 export const Profile = (props) => {
     const currentUser = React.useContext(CurrentUserContext);
     const {values, handleChange, errors, isValid} = useFormWithValidation()
-
+    const nameProfile = localStorage.getItem('profile');
+    let apple;
+    if(nameProfile != null){
+        apple = nameProfile;
+    }
+    else {
+        apple = currentUser.name
+    }
     function handleSubmit(e){
         e.preventDefault()
         const {name, email} = values;
         props.onUpdateUser({name, email});
+
+
     }
     return (
         <>
         <MoviesHeader />
         <section className="profile">
             <form className="profile__container" onSubmit={handleSubmit}>
-                <h3 className="profile__title">{`Привет, ${currentUser.name}!`}</h3>
+                <h3 className="profile__title">{`Привет, ${apple}!`}</h3>
                 <div className="profile__text-container">
                     <div className="profile__text-content">
                         <p className="profile__name">Имя</p>

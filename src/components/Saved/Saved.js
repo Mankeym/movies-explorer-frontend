@@ -16,7 +16,7 @@ const Saved = (props) => {
             />
 
             <SavedMoviesCards
-                savedLike={moviesLocalStorage} movies={moviesLocalStorage} setLike={props.saveMovie} setDislike={props.deleteMovie} savedMovies={props.savedMovies}
+                countMoviesSavedSearch={props.countSavedMoviesSearch} savedLike={moviesLocalStorage} movies={moviesLocalStorage} setLike={props.saveMovie} setDislike={props.deleteMovie} savedMovies={props.savedMovies}
             />
 
             <Footer />

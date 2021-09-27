@@ -1,19 +1,32 @@
 import SavedMoviesCard from "../SavedMovieCard/SavedMoviesCard";
 import React, {useEffect} from "react";
+import {useMediaQuery} from "react-responsive";
 
 function SavedMoviesCards(props) {
     const [renderedMoviesCount, setRenderedMoviesCount] = React.useState(6);
+    const isTablet = useMediaQuery({ query: '(max-width: 1270px)' });
+    const isMobile = useMediaQuery({ query: '(max-width: 710px)' });
+
     function clickButtonMoreFilm() {
-        setRenderedMoviesCount(renderedMoviesCount+3)
+        if(isMobile){
+            setRenderedMoviesCount(renderedMoviesCount+1)
+        }else if(isTablet){
+            setRenderedMoviesCount(renderedMoviesCount+2)
+        }else{
+            setRenderedMoviesCount(renderedMoviesCount+3)
+        }
+
     }
-    console.log(props.movies.length)
+    console.log(props.countMoviesSavedSearch)
     return(
         <section className="cards">
             <div className="cards__container">
 
 
+                {props.countMoviesSavedSearch && <span>Ничего не найдено</span>}
                 {
-                    props.movies.slice(0, renderedMoviesCount).map((movie) =>
+
+                    !(props.countMoviesSavedSearch) && props.movies.slice(0, renderedMoviesCount).map((movie) =>
                         (
                             <>
                                 <SavedMoviesCard  movie={movie} key={movie.movieId ? movie.movieId : movie.id}
@@ -25,7 +38,7 @@ function SavedMoviesCards(props) {
                 }
 
             </div>
-            { props.movies.length > 6 && (
+            { props.movies.length > 6 && !(props.countMoviesSavedSearch) && (
                 <div className="cards__button-container">
                     <button onClick={clickButtonMoreFilm} className={"cards__more"}>
                         Ещё

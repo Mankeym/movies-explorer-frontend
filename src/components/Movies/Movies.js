@@ -15,9 +15,12 @@ function Movies(props) {
             <SearchForm onSearch={props.onSearch} isActive={props.isActive} handleChange={props.handleChange}
             />
             <Preloader isOn={props.isPreloaderOn}/>
-                     <MoviesCards
-                         movies={moviesLocalStorage} setLike={props.saveMovie} setDislike={props.deleteMovie} savedMovies={props.savedMovies}
-                        />
+
+                    <MoviesCards
+                        counterMoviesSearch={props.counterMoviesSearch} movies={moviesLocalStorage} setLike={props.saveMovie} setDislike={props.deleteMovie} savedMovies={props.savedMovies}
+                    />
+
+
 
             <Footer />
         </main>

@@ -11,7 +11,9 @@
     font-size: 10px;
     line-height: 9px;
     /* identical to box height, or 90% */
-
+    background-image: url("../../images/save3d.png");
+    background-repeat: no-repeat;
+    background-position: center;
     color: #000000;
     border: none;
 }
@@ -76,6 +78,8 @@
 }
 .movies-card__image{
     max-width: 360px;
+    width: 100%;
+    height: 100%;
 }
 @media (max-width: 1200px) {
     .movies-card__image{

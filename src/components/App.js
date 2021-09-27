@@ -1,4 +1,4 @@
-import { Route, Switch, useHistory} from "react-router-dom";
+import { Route, Switch, useHistory, useLocation} from "react-router-dom";
 import React from "react";
 import Main from "./Main";
 import Movies from './Movies/Movies';
@@ -23,13 +23,19 @@ function App() {
     const [currentUser, setCurrentUser] = React.useState({_id: '', name: '', email: ''});
     const [editProfileStatus, setEditProfileStatus] = React.useState(false);
     const [isStatusOk, setStatusOk] = React.useState(false);
+    const {pathname} = useLocation();
 
     //константы для регистрации, авторизации
     const [data, setData] = React.useState({
         email: '',
         password: ''
     });
-
+    const MainRoute = '/';
+    const isRegisterRoute = '/signup' == pathname;
+    const isLoginRoute = '/signin' == pathname;
+    const ProfileRoute = '/profile';
+    const MovieRoute = '/movies';
+    const SaveMovieRoute = '/saved-movies';
 //фильмы
     const [moviesFromApi, setMoviesFromApi] = React.useState([]);
     const [searchedMovies, setSearchedMovies] = React.useState([]);
@@ -41,6 +47,8 @@ function App() {
         tumbler: false
     });
     const [showMore, setShowMore] = React.useState(true);
+    const [countMoviesSearch, setCountMoviesSearch] = React.useState(false)
+    const [countMoviesSavedSearch, setCountMoviesSavedSearch] = React.useState(false)
 
     function countClick() {
         changeClickCounter(clickCounter+1)
@@ -74,6 +82,7 @@ function App() {
             .then(() => {
                 setStatusOk(true);
                 history.push('/signin')
+                localStorage.setItem('profile', name)
             })
             .catch((err) => {
                 setStatusOk(false);
@@ -127,6 +136,7 @@ function App() {
         newMainApi.editProfileInfo(user.name, user.email)
             .then((data) => {
                 setCurrentUser(data);
+                localStorage.setItem('profile', data.user.name)
                 setEditProfileStatus(true);
             })
             .catch((err) => {
@@ -173,17 +183,23 @@ function App() {
             }
         })
         preloaderOff();
+        if(a.length <= 0){
+            setCountMoviesSearch(true)
+        }
+        else{
+            setCountMoviesSearch(false)
+        }
+
         setSearchedMovies(a);
         changeClickCounter(1);
         localStorage.setItem("movies", JSON.stringify(a))
     }
 
-
     function handleSearchSaveMoviesForm(e) {
         e.preventDefault();
         preloaderOn();
         const value = e.target.querySelector('.search__input').value
-        const a =  savedMovies.filter((movie) => {
+        const film =  savedMovies.filter((movie) => {
             if(isActive.tumbler == true){
                 return movie.nameRU?.includes(value)&& movie.duration <= 40 || movie.nameEN?.includes(value) && movie.duration <= 40
             }
@@ -192,11 +208,20 @@ function App() {
             }
 
         })
+        if(film.length <= 0){
+            setCountMoviesSavedSearch(true)
+        }
+        else{
+            setCountMoviesSavedSearch(false)
+        }
         preloaderOff();
-        setSearchedMovies(a);
+        console.log(film)
+        setSearchedMovies(film);
         changeClickCounter(1);
-        localStorage.setItem("saved-movies", JSON.stringify(a))
+        localStorage.setItem("saved-movies", JSON.stringify(film))
     }
+    console.log(1212)
+    console.log(countMoviesSavedSearch)
     //проверяем наличие лайка по id
     function isLiked(movieId) {
         for (const movie of Object.keys(savedMovies)) {
@@ -285,6 +310,7 @@ function App() {
                               savedMovies={savedMovies}
                               isActive={isActive}
                               handleChange={handleChange}
+                              counterMoviesSearch={countMoviesSearch}
               />
                 <ProtectedRoute path="/saved-movies"
                                 loggedIn={loggedIn}
@@ -299,6 +325,7 @@ function App() {
                                 savedMovies={savedMovies}
                                 isActive={isActive}
                                 handleChange={handleChange}
+                                countSavedMoviesSearch={countMoviesSavedSearch}
                 />
 
 
@@ -308,26 +335,26 @@ function App() {
                     onUpdateUser={handleUpdateUser}
                     onLogOut={handleLogOut}
                     component={Profile}
+                    user={currentUser}
                 />
-              <Route path="/signin">
-                  <Login
-                      data={data}
-                      onEnter={setData}
-                      onAutorization={handleAuthorization} />
-              </Route>
-              <Route path="/signup">
-                  <Register onRegister={handleRegistration}
-                            isValidate={useFormWithValidation}
-                            />
-              </Route>
+
 
                         <Route path='*'>
                             <Error />
                         </Route>
 
           </Switch>
-
-
+          <Route path="/signin">
+              <Login
+                  data={data}
+                  onEnter={setData}
+                  onAutorization={handleAuthorization} />
+          </Route>
+          <Route path="/signup">
+              <Register onRegister={handleRegistration}
+                        isValidate={useFormWithValidation}
+              />
+          </Route>
       </CurrentUserContext.Provider>
   );
 

@@ -139,3 +139,6 @@
     display: flex;
     flex-direction: column;
 }
+.profile__edit-button_novalidate {
+    color: #8B8B8B;
+}

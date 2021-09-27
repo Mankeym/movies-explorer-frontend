@@ -97,6 +97,7 @@ function App() {
             .then((data) => {
                 console.log(data.token, email, password)
                 localStorage.setItem('jwt', data.token);
+                localStorage.setItem('profile', currentUser.name);
                 history.push('/movies')
                 newMainApi.setToken();
                 setLoggedIn(true);

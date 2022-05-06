@@ -1,0 +1,37 @@
+.promo__title{
+    font-family: Inter, serif ;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 40px;
+    line-height: 52px;
+    letter-spacing: -0.04em;
+    color: #FFFFFF;
+    width: 626px;
+    margin: 0 0 0 70px;
+    padding-top: 50px;
+}
+@media (max-width: 780px) {
+    .promo__title{
+        max-width: 680px;
+        width: 100%;
+        padding-top: 0;
+        margin: 300px auto 0 auto;
+        text-align: center;
+    }
+}
+@media (max-width: 730px) {
+    .promo__title{
+        margin: 300px 0 0 0;
+        font-family: Inter, serif;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 31px;
+        line-height: 39px;
+        /* or 126% */
+
+        text-align: center;
+        letter-spacing: -0.04em;
+
+        color: #FFFFFF;
+    }
+}

@@ -1,0 +1,5 @@
+.about__line{
+    display: flex;
+    margin: 110px 70px;
+    max-width: 1280px;
+}

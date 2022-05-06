@@ -1,0 +1,24 @@
+.student__title{
+    margin-top: 110px;
+    margin-left: 70px;
+    margin-right: 70px;
+    padding-bottom: 23px;
+    border-bottom: 1px solid black;
+    font-family: Inter, serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 22px;
+    line-height: 27px;
+    /* identical to box height */
+
+    letter-spacing: -0.04em;
+
+    color: #000000;
+}
+@media (max-width: 730px) {
+    .student__title{
+        margin-left: 14px;
+        margin-right: 14px;
+
+    }
+}

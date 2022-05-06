@@ -1,0 +1,26 @@
+.about__textcontainer{
+    display: flex;
+    flex-direction: column;
+    max-width: 550px;
+    width: 100%;
+
+}
+.about__textcontainer:first-of-type{
+    margin-right: 30px;
+}
+@media (max-width: 780px) {
+    .about__textcontainer{
+        max-width: 319px;
+        font-size: 18px;
+        line-height: 22px;
+
+    }
+    .about__textcontainer:first-of-type{
+        margin-bottom: 56px;
+    }
+}
+@media (max-width: 450px) {
+    .about__textcontainer{
+        margin: 0 18px 0;
+    }
+}

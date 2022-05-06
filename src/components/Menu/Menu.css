@@ -1,0 +1,106 @@
+.menu{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+    background: rgba(0, 0, 0, .3);
+    display: none;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+.menu_active{
+    display: flex;
+}
+.menu__container{
+    position: relative;
+    width: 520px;
+    background: white;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    opacity: 1;
+}
+.menu__link-container{
+    display: flex;
+    flex-direction: column;
+    margin-top: 112px;
+}
+.menu__button-container{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+.menu__link{
+    font-family: Inter, serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    /* identical to box height */
+
+    text-align: center;
+
+    color: #000000;
+    margin-bottom: 28px;
+}
+
+.menu__link:hover{
+    text-decoration: underline ;
+    text-decoration-color: black;
+}
+.menu__button{
+    margin-top: 23px;
+    margin-right: 23px;
+    background-color: transparent;
+    border: none;
+}
+.menu__account-button{
+    width: 100px;
+    display: flex;
+    height: 32px;
+    margin: 0;
+    padding: 0;
+    border: none;
+    border-radius: 50px;
+    background: white;
+    box-shadow: 0px 0px 3px rgb(0 0 0 / 25%);
+}
+.menu__account-name{
+    font-family: Inter, serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 12px;
+    color: #000000;
+    margin: 10px 7px 10px 11px;
+}
+.menu__account-content{
+    background: #F9F9F9;
+    border-radius: 50px;
+    width: 26px;
+    height: 26px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 3px;
+}
+.menu__account-image{
+    width: 11px;
+    height: 11px;
+    align-self: center;
+}
+.menu__account-container{
+    margin-top: 621px;
+    margin-bottom: 90px;
+}
+.menu__link:last-of-type{
+    margin: 0;
+}
+@media (max-width: 450px) {
+    .menu__account-container{
+        margin-top: 444px;
+        margin-bottom: 46px;
+    }
+}

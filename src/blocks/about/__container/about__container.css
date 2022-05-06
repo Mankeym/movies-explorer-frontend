@@ -1,0 +1,17 @@
+.about__container{
+    margin: 70px 70px 0;
+    display: flex;
+    justify-content: space-between;
+    max-width:1140px;
+}
+@media (max-width: 730px) {
+    .about__container{
+        margin: 70px auto 0;
+        flex-direction: column;
+    }
+}
+@media (max-width: 450px) {
+    .about__container{
+        flex-direction: column;
+    }
+}

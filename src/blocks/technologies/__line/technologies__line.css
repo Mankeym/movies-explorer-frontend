@@ -1,0 +1,22 @@
+.technologies__line{
+    display: flex;
+    justify-content: center;
+    margin: 83px auto 90px;
+}
+@media (max-width: 730px) {
+    .technologies__line{
+        margin-top: 50px;
+        margin-bottom: 70px;
+        max-width: 1140px;
+        width: 100%;
+        display: grid;
+        grid-template-columns: 84px 84px;
+        grid-template-rows: 57px 57px;
+        grid-column-gap: 17px;
+        grid-column-gap: 10px;
+        column-gap: 10px;
+        grid-row-gap: 60px;
+        grid-row-gap: 20px;
+        row-gap: 10px;
+    }
+}

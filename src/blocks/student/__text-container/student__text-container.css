@@ -1,0 +1,11 @@
+.student__text-container{
+    display: flex;
+    flex-direction: column;
+    margin-left: 70px;
+}
+@media (max-width: 730px) {
+    .student__text-container{
+        margin-left: 14px;
+
+    }
+}
